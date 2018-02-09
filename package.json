@@ -1,0 +1,23 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "description": "a basic node web application framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests --recursive --exit"
+  },
+  "engines": {
+    "node": "^9.4.0",
+    "npm": "^5.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andydam/web.git"
+  },
+  "author": "andydam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andydam/web/issues"
+  },
+  "homepage": "https://github.com/andydam/web#readme"
+}
