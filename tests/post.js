@@ -19,8 +19,8 @@ describe('POST method', () => {
       response.end(request.body);
     };
     server.post(testHandler);
-    expect(server._postHandlers).to.have.lengthOf.at.least(1);
-    expect(server._postHandlers[0]).to.equal(testHandler);
+    expect(server._postHandlers['/']).to.have.lengthOf.at.least(1);
+    expect(server._postHandlers['/'][0]).to.equal(testHandler);
     done();
   });
   it('should use the added handler for POST requests', (done) => {
@@ -31,6 +31,27 @@ describe('POST method', () => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.text).to.equal('test');
+        done();
+      });
+  });
+  it('should accept a handler for GET request to a given path', (done) => {
+    const testHandler2 = (request, response) => {
+      response.writeHead(200);
+      response.end(request.body);
+    };
+    server.post('/test2', testHandler2);
+    expect(server._postHandlers['/test2']).to.have.lengthOf.at.least(1);
+    expect(server._postHandlers['/test2'][0]).to.equal(testHandler2);
+    done();
+  });
+  it('should use the added handler for GET request to a given path', (done) => {
+    chai
+      .request(server)
+      .post('/test2')
+      .send('test2')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.text).to.equal('test2');
         done();
       });
   });
