@@ -53,4 +53,32 @@ describe('GET method', () => {
         done();
       });
   });
+  it('should accept a handler for GET request to a given path with param', (done) => {
+    const testHandler3 = (request, response) => {
+      response.writeHead(200);
+      response.end(request.params.test);
+    };
+    server.get('/test3/:test', testHandler3);
+    expect(server._getHandlers['/test3/:test']).to.have.lengthOf.at.least(1);
+    expect(server._getHandlers['/test3/:test'][0]).to.equal(testHandler3);
+    done();
+  });
+  it('should use the added handler for GET request to a given path with param', (done) => {
+    chai
+      .request(server)
+      .get('/test3/atest')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('should pass the param value to the added handler for GET request to a given path with param', (done) => {
+    chai
+      .request(server)
+      .get('/test3/atest')
+      .end((err, res) => {
+        expect(res.text).to.equal('atest');
+        done();
+      });
+  });
 });
