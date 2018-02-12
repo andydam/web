@@ -44,7 +44,7 @@ describe('POST method', () => {
     expect(server._postHandlers['/test2'][0]).to.equal(testHandler2);
     done();
   });
-  it('should use the added handler for GET request to a given path', (done) => {
+  it('should use the added handler for POST request to a given path', (done) => {
     chai
       .request(server)
       .post('/test2')
