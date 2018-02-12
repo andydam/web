@@ -15,9 +15,19 @@ webApp.listen(3000);
 
 # Table of Contents
 
+1. [Installation](#installation)
 1. [Features](#features)
 1. [Benchmarks](#benchmarks)
 1. [Requirements](#requirements)
+
+## Installation
+
+Installation is done using the
+[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
+
+```bash
+$ npm install andydam/web
+```
 
 ## Features
 
