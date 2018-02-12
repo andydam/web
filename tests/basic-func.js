@@ -3,7 +3,7 @@ const http = require('http');
 
 const web = require('../index');
 
-const server = web();
+const server = web.server();
 
 describe('Basic Functionality', () => {
   it('should create a HTTP server', (done) => {

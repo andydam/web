@@ -1,33 +1,16 @@
 const http = require('http');
 
-const Method = require('../methods/method');
-const PostMethod = require('../methods/post');
+const router = require('../router');
 
 const web = () => {
-  const get = new Method();
-  const post = new PostMethod();
+  const httpRouter = router();
 
-  const httpServer = Object.assign(
-    http.createServer((request, response) => {
-      switch (request.method) {
-        case 'GET':
-          get.handler(request, response);
-          break;
-        case 'POST':
-          post.handler(request, response);
-          break;
-        default:
-          response.writeHead(500);
-          response.end();
-      }
-    }),
-    {
-      get: (...args) => get.method(...args),
-      post: (...args) => post.method(...args),
-      _getHandlers: get.handlers,
-      _postHandlers: post.handlers,
-    },
-  );
+  const httpServer = Object.assign(http.createServer(httpRouter), {
+    get: (...args) => httpRouter.get(...args),
+    post: (...args) => httpRouter.post(...args),
+    _getHandlers: httpRouter._getHandlers,
+    _postHandlers: httpRouter._postHandlers,
+  });
 
   return httpServer;
 };
