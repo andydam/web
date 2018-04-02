@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 describe('Static Files', () => {
   before((done) => {
-    server.use('/static', web.static(path.join('tests/testFiles')));
+    server.use('/static', web.static('tests/testFiles'));
     server.listen();
     done();
   });
