@@ -29,7 +29,11 @@ const readFile = (requestPath, response) => {
 const staticServer = (inputPath, fileExtensions = defaultFileExtensions) => {
   const folderPath = path.join(process.cwd(), inputPath);
 
-  const responseHandler = async function responseHandler(request, response) {
+  const responseHandler = async function responseHandler(
+    request,
+    response,
+    route,
+  ) {
     if (request instanceof http.IncomingMessage) {
       if (request.method === 'GET') {
         const requestUrl = url.parse(request.url);
@@ -38,7 +42,10 @@ const staticServer = (inputPath, fileExtensions = defaultFileExtensions) => {
           response.writeHead(403, 'Forbidden');
           response.end();
         } else {
-          const requestPath = path.join(folderPath, requestUrl.pathname);
+          const requestPath = path.join(
+            folderPath,
+            requestUrl.pathname.slice(route.length),
+          );
           const fileStatus = await checkPath(requestPath);
 
           switch (fileStatus) {
