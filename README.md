@@ -1,5 +1,7 @@
 # web
 
+[![Build Status](https://travis-ci.org/andydam/web.svg?branch=master)](https://travis-ci.org/andydam/web)
+
 an extremely lightweight node web application framework
 
 ```js
@@ -15,10 +17,10 @@ webApp.listen(3000);
 
 # Table of Contents
 
-1. [Installation](#installation)
-1. [Features](#features)
-1. [Benchmarks](#benchmarks)
-1. [Requirements](#requirements)
+1.  [Installation](#installation)
+1.  [Features](#features)
+1.  [Benchmarks](#benchmarks)
+1.  [Requirements](#requirements)
 
 ## Installation
 
@@ -31,10 +33,10 @@ $ npm install andydam/web
 
 ## Features
 
-1. [Router](#router)
-1. [Route Params](#route-params)
-1. [POST Request Body](#post-request-body)
-1. [Everything Else](#everything-else)
+1.  [Router](#router)
+1.  [Route Params](#route-params)
+1.  [POST Request Body](#post-request-body)
+1.  [Everything Else](#everything-else)
 
 #### Router
 
