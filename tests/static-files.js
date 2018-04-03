@@ -33,4 +33,13 @@ describe('Static Files', () => {
         done();
       });
   });
+  it('should return a 403 for an invalid path', (done) => {
+    chai
+      .request(server)
+      .get('/static/..')
+      .end((err, res) => {
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
 });
