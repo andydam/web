@@ -1,5 +1,7 @@
 # web
 
+[![Build Status](https://travis-ci.org/andydam/web.svg?branch=master)](https://travis-ci.org/andydam/web)
+
 an extremely lightweight node web application framework
 
 ```js
@@ -15,10 +17,10 @@ webApp.listen(3000);
 
 # Table of Contents
 
-1. [Installation](#installation)
-1. [Features](#features)
-1. [Benchmarks](#benchmarks)
-1. [Requirements](#requirements)
+1.  [Installation](#installation)
+1.  [Features](#features)
+1.  [Benchmarks](#benchmarks)
+1.  [Requirements](#requirements)
 
 ## Installation
 
@@ -31,10 +33,11 @@ $ npm install andydam/web
 
 ## Features
 
-1. [Router](#router)
-1. [Route Params](#route-params)
-1. [POST Request Body](#post-request-body)
-1. [Everything Else](#everything-else)
+1.  [Router](#router)
+1.  [Static Files](#static-files)
+1.  [Route Params](#route-params)
+1.  [POST Request Body](#post-request-body)
+1.  [Everything Else](#everything-else)
 
 #### Router
 
@@ -48,10 +51,16 @@ webRouter.get('/', (req, res) => {
 webApp.use(webRouter);
 ```
 
+#### Static Files
+
+```js
+webApp.use('/static', web.static('path/to/folder'));
+```
+
 #### Route Params
 
 ```js
-webServer.get('/some/path/:dynamic', (req, res) => {
+webApp.get('/some/path/:dynamic', (req, res) => {
   res.end('Dynamic end point is ' + req.params.dynamic);
 });
 ```
@@ -61,7 +70,7 @@ _web only has support for one param at the end of static path_
 #### POST Request Body
 
 ```js
-webServer.post('/somePoint', (req, res) => {
+webApp.post('/somePoint', (req, res) => {
   res.end('POST data is ' + req.body);
 });
 ```
